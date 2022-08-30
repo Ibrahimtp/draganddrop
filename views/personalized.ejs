@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Special School | Blog</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/stylesheets/css/style.css">
+<link href="/stylesheets/dragula.css" rel="stylesheet" >
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+.items{
+  display:block;
+}
+
+
+/* CSS */
+.button-74 {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: right;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
+.button-75 {
+  background-color:red ;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: right;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.subb {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+
+
+
+.containercircle {
+        margin: 100px;
+      }
+
+      .my-button {
+      /*  width: 
+        height: ;*/
+        border: 7px solid red;
+        border-radius: 100px;
+        outline: none;
+        background: white;
+        color: white; 
+        cursor: pointer;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      }
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css"><![endif]-->
+</head>
+<body onload="">
+<div id="header">
+  <div> <a href="/"><img src="/images/alade.png" width="200px" height="auto" alt=""></a>
+    <ul>
+      <li ><a href="/" id="homeb">Home</a></li>
+      <li><a href="/configure">Surats</a></li>
+      <li><a href="/<%=href %>"><%= accessWebsite %></a></li>
+      <li class="current"></li><a href="/signup"> Sign Up</a></li>
+    <!---  <li><a href="contact.html">Contact us</a></li> -->
+    </ul>
+  </div>
+</div>
+
+
+<% const shuffleArray = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array
+} %>
+
+
+<% let shuffled = shuffleArray(neededVerseRange) ;%>
+
+  
+
+ 
+
+<div class="container">
+    <% if(suratInfo.variant == 'Arabic')  { %>
+  <div id="rrow" class="row  mt-5 justify-content shadow">
+    <h1 id="suratinfo1" class="text-center"><%=suratInfo.name %></h1>
+    <h4 id="suratinfo2" class="text-center mb-3"> Verse :<%= suratInfo.from +1 %> - <%= suratInfo.end+1 %> </h4>
+      <div class="col  w-50 text-center p-3" id="container" style="border:5px solid lightblue">
+          <% for (verse of shuffled) { %>
+           
+           
+            <p id="aya-<%=verse.id %>" class="p-2 button-74 aya text-center  "><%= verse.text %></p> <% } %>
+          
+      </div>
+      <div class="col " id="container2" style="border:5px solid lightblue" >
+                      
+        <div id="dis" class="containercircle m-0 w-50" style="display:none;">
+          <button id="scored" class="my-button text-primary " style="font-size:60px;">100 %</button>
+        </div>     
+         
+
+
+      </div>
+     
+  </div>
+  
+   <% } else { %> 
+    <h1 id="suratinfo1" class="text-center"><%=suratInfo.transliteration %></h1>
+    <h4 id="suratinfo2" class="text-center mb-3"> Verse :<%= suratInfo.from +1 %> - <%= suratInfo.end +1 %> </h4>
+    <div id="rrow" class="row  justify-content-center">
+      <div class="col w-50 text-center" id="container" style="border:5px solid black;background-color: #89ABE3FF;">
+          <% for (verse of shuffled) { %>
+           
+           
+            <p id="aya-<%= verse.id %>" class="p-2 button-74 aya text-center"><%= verse.transliteration %></p> <% } %>
+          
+      </div>
+      <div class="col " id="container2" style="border:5px solid grey;background-color: #89ABE3FF;">
+                      
+        <div id="dis" class="containercircle m-0 w-50" style="display:none;float:right">
+          <button id="scored" class="my-button text-dark " style="font-size:60px;">100 %</button>
+        </div>     
+         
+
+
+      </div>
+      
+  </div>
+  
+<% } %>
+
+</div>
+
+<center><button id="sbtn" onclick="assess()" class="btn subb btn-lg btn  mt-5" >Submit</button></center>
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+<script src='/javascripts/dragula.min.js'></script>
+
+<script>
+
+
+dragula([document.getElementById('container2'),document.getElementById('container'),document.getElementById('c')], {
+  isContainer: function (el) {
+    return false; // only elements in drake.containers will be taken into account
+  },
+  moves: function (el, source, handle, sibling) {
+    return true; // elements are always draggable by default
+  },
+  accepts: function (el, target, source, sibling) {
+    return true; // elements can be dropped in any of the `containers` by default
+  },
+  invalid: function (el, handle) {
+    return false; // don't prevent any drags from initiating by default
+  },
+  direction: 'vertical',             // Y axis is considered when determining where an element would be dropped
+  copy: false,                       // elements are moved by default, not copied
+  copySortSource: false,             // elements in copy-source containers can be reordered
+  revertOnSpill: false,              // spilling will put the element back where it was dragged from, if this is true
+  removeOnSpill: false,              // spilling will `.remove` the element, if this is true
+  mirrorContainer: document.body,    // set the element that gets mirror elements appended
+  ignoreInputTextSelection: true,     // allows users to select input text, see details below
+  slideFactorX: 0,               // allows users to select the amount of movement on the X axis before it is considered a drag instead of a click
+  slideFactorY: 0,               // allows users to select the amount of movement on the Y axis before it is considered a drag instead of a click
+})
+
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+
+<script>
+  const isSorted = arr => {
+  if (arr.length <= 1) return 0;
+  const direction = arr[1] - arr[0];
+  for (let i = 2; i < arr.length; i++) {
+    if ((arr[i] - arr[i - 1]) * direction < 0) return 0;
+  }
+  return Math.sign(direction);
+};
+
+
+
+function assess() {
+
+  
+  
+
+ let studentArrangement =  [] ;
+ let correctArrangement = [] ;
+
+
+arrOfAya = document.querySelectorAll('.aya')
+
+arrOfAya.forEach((aya)=>{
+  studentArrangement.push(Number(aya.id.replace('aya-','')))
+})
+
+console.log(studentArrangement)
+
+if(isSorted(studentArrangement) == 1 ) {
+  document.getElementById('dis').style.display = 'block' ;
+ 
+  document.getElementById('sbtn').disable = true;
+
+
+}
+
+
+else{
+
+  arrOfAya.forEach((aya)=>{
+   correctArrangement.push(Number(aya.id.replace('aya-','')))
+  })
+
+  correctArrangement = correctArrangement.sort()
+  let percentage = returnScore(correctArrangement,studentArrangement)
+  document.getElementById('scored').innerHTML= Math.round(percentage.score) + '%'
+  document.getElementById('dis').style.display = 'block' ;
+  document.getElementById('dis').scrollIntoView();
+ percentage.failedId.forEach((failedSurat)=>{
+  document.getElementById(failedSurat).classList.remove("button-74");
+  document.getElementById(failedSurat).className = 'button-75'
+  document.getElementById(failedSurat).style.backgroundColor = 'red';
+  
+  document.getElementById('sbtn').style.display = 'none'
+ })
+   
+  
+ 
+}
+
+document.getElementById('container').style.display = 'none'
+document.getElementById('rrow').classList.remove("row");
+document.getElementById('container2').classList.remove("col");
+document.getElementById('container2').className += 'w-50 mx-auto p-5' ;
+
+document.getElementById('sbtn').disable = true;
+
+let scoreData = {
+  score:document.getElementById('scored').innerHTML,
+  range1:'<%=suratInfo.name %>',
+  range2:document.getElementById('suratinfo2').innerHTML
+}
+
+
+
+axios.post('/assess',scoreData).then((n)=>{
+  setTimeout(() => {
+    alert('your score has been submitted successfully')
+  /* setTimeout(() => {
+    document.querySelector('#homeb').click()
+   },3000);*/
+  }, 1000);
+  
+}).catch((e)=>{
+  alert(e)
+})
+
+}
+
+
+function returnScore(arr1,arr2) {
+    
+    let score = 0 ;
+    let failedID = []
+    if(arr1.length == arr2.length) {
+        for(i=0;i<arr1.length;i++) {
+            if(arr1[i] === arr2[i]) {
+                score +=1 ;
+            }
+            else{
+              failedID.push('aya-'+arr1[i])
+            }
+        }
+    }
+    
+    else {
+        for(n=0;n<arr2.length;n++){
+            if(arr2[n]===arr1[n]){
+                score +=1 ;
+            }
+            else{
+              failedID.push('aya-'+arr2[n])
+            }
+        }
+    }
+    
+    
+    return {score:score/arr1.length * 100,failedId:failedID }
+    
+    }
+
+
+    window.onload = function () { 
+
+setSizeff()
+
+}
+
+
+    function setSizeff() {
+    ele =   document.getElementById('conatainer')
+    
+     // alert(ele.Height)
+      //alert()
+
+    }
+
+</script>
+
+</body>
+</html>

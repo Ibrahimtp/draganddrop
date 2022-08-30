@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Special School | Contact</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/stylesheets/css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css"><![endif]-->
+</head>
+<body>
+<div id="header">
+  <div> <a href="/"><img src="/images/alade.png" width="200px" height="auto" alt=""></a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li class=""><a href="/configure">Surats</a></li>
+      <li><a href="/<%=href %>"><%= accessWebsite %></a></li>
+      <li class="current"><a href="/signup">Sign Up</a></li>
+    <!---  <li><a href="contact.html">Contact us</a></li> -->
+    </ul>
+  </div>
+</div>
+<div class="content">
+ <div class="container mx-auto w-50 mt-5">
+  <div class="container w-50">
+    <form action="/signup/signingup" method="post">
+      <input type="text" class="form-control mb-2" name="fullname" placeholder="Full Name">
+      <input type="text" class="form-control mb-2" name="password" placeholder="Password">
+      <select name="grade" id="" class="form-select mb-2">
+        <option value="">Choose your grade....</option>
+        <option value="YEAR 1">YEAR 1</option>
+        <option value="YEAR 2">YEAR 2</option>
+        <option value="YEAR 3">YEAR 3</option>
+        <option value="YEAR 4">YEAR 4</option>
+        <option value="YAER 5">YEAR 5</option>
+        <option value="YEAR 6">YEAR 6</option>
+        <option value="YEAR 7">YEAR 7</option>
+        <option value="YEAR 8">YEAR 8</option>
+        <option value="YEAR 9">YEAR 9</option>
+        <option value="YEAR 10">YEAR 10</option>
+        <option value="YEAR 11">YEAR 11</option>
+        <option value="YEAR 12">YEAR 12</option>
+      </select>
+      <center><button class="btn btn-sm btn-warning text-white mb-2" >Submit</button></center>
+    </form>
+  </div>
+ </div>
+</div>
+<div id="footer">
+  <div>
+    <div> <span>Follow us</span> <a href="#" class="facebook">Facebook</a> <a href="#" class="subscribe">Subscribe</a> <a href="#" class="twitter">Twitter</a> <a href="#" class="flicker">Flickr</a> </div>
+    <ul>
+      <li> <a href="#"><img src="images/playing-in-grass.gif" alt=""></a>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+        <a href="#" class="readmore">Read more</a> </li>
+      <li> <a href="#"><img src="images/baby-smiling.gif" alt=""></a>
+        <p>Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud.</p>
+        <a href="#" class="readmore">Read more</a> </li>
+    </ul>
+  </div>
+  <p class="footnote">Copyright &copy; 2012 <a href="#">School Name</a> All rights reserved | Website Template By <a target="_blank" href="http://www.freewebsitetemplates.com/">freewebsitetemplates.com</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html> 

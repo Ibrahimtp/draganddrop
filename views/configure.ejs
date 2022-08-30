@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<title> Drag And Drop Verses</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/stylesheets/css/style.css">
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css"><![endif]-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<div id="header">
+  <div> <a href="/"><img src="/images/alade.png" width="200px" height="auto" alt=""></a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li class="current"><a href="/configure">Surats</a></li>
+      <li><a href="/<%=href %>"><%= accessWebsite %></a></li>
+      <li><a href="/signup">Sign Up</a></li>
+    <!---  <li><a href="contact.html">Contact us</a></li> -->
+    </ul>
+  </div>
+</div>
+<div class="content">
+  <% if (configureMessage) { %> 
+  <div class="alert alert-warning text-danger" role="alert">
+    <strong>Select the Surat and verses before accessing the personalized page!</strong>
+  </div> <% } else %> <% { %>  
+      <% } %>
+  <div>
+    <div> <img src="images/professionals.jpg" alt=""> </div>
+    <div>
+      <div id="viewT" class="container mx-auto w-75 p-5 bg-warning">
+        <form id="formP" action="/personalized/" onsubmit="event.preventDefault();handleError()" >
+        <h4 class="texr-center">Choose Surat & Verses</h4>
+        <div class="row g-3">
+          <div class="col-sm-">
+            <label for="suratt" class="form-label"></label>
+            <select name="surat" id="suratt" class="form-select mt-0">
+              <option >Surat...</option>
+            s
+            </select>
+          </div>
+          <div class="col-sm">
+            <input id="fromv" type="text" class="form-control mt-4" placeholder="from" aria-label="State" name="from">
+          </div>
+          <div class="col-sm">
+            <input id="tov" type="text" class="form-control mt-4" placeholder="to" aria-label="Zip" name="end">
+          </div>
+        </div>
+          <div class="row">
+            <center>
+            <div class="col-sm">
+              <select name="variant" id="suratt" class="form-select mt-0">
+                <option >Variant...</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Translitertion">Transliteration</option>
+              s
+              </select>
+            </div>
+            <div class="col-sm">
+              <button id="submitc" class="btn btn-md btn-success" >Submit</button>
+            </div>
+          </center>
+          </div>
+          
+       
+
+      </div>
+        </form>
+  </div>
+</div>
+<div id="footer">
+  <div>
+    <div> <span>Follow us</span> <a href="#" class="facebook">Facebook</a> <a href="#" class="subscribe">Subscribe</a> <a href="#" class="twitter">Twitter</a> <a href="#" class="flicker">Flickr</a> </div>
+    <ul>
+      <li> <a href="#"><img src="images/playing-in-grass.gif" alt=""></a>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+        <a href="#" class="readmore">Read more</a> </li>
+      <li> <a href="#"><img src="images/baby-smiling.gif" alt=""></a>
+        <p>Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud.</p>
+        <a href="#" class="readmore">Read more</a> </li>
+    </ul>
+  </div>
+  <p class="footnote">Copyright &copy; 2012 <a href="#">School Name</a> All rights reserved | Website Template By <a target="_blank" href="http://www.freewebsitetemplates.com/">freewebsitetemplates.com</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="/javascripts/quranSuratData.js"></script>
+<script>
+let suratOptions = '' ;
+let submitButton = document.querySelector('#submitc')
+
+
+SuratData.forEach((n)=>{
+  suratOptions += `<option > ${parseInt(n.index,10)} ${n.title} ${n.titleAr} (${n.count} verses) </option>`
+})
+
+document.querySelector('#suratt').innerHTML += suratOptions ;
+
+/*
+submitButton.addEventListener('click',()=>{
+  let surat = document.querySelector('#suratt').value ;
+  let suratIndex = surat.split(' ')[0]
+  let startFrom =  document.querySelector('#fromv').value ;
+  let endAt = document.querySelector('#tov').value ;
+
+  alert(suratIndex+ ' '+ startFrom + ' '+endAt)
+
+  location.href = `/personalized?suratIndex=${surat},startFrom=${startFrom},endAt=${endAt}` ;
+})*/
+
+setTimeout(() => {
+  let elem = document.querySelector('#viewT') ;
+  elem.scrollIntoView();
+},3000);
+
+
+
+function handleError(e){
+  let startFrom =  parseInt(document.querySelector('#fromv').value) ;
+  let endAt = parseInt(document.querySelector('#tov').value) ;
+
+selectElement  = document.querySelector('#suratt') ;
+
+if(startFrom>=selectElement.value ){
+  alert('The surat has to start from a lower verse ')
+  //throw Error() 
+ return
+}
+
+else if (endAt>selectElement.value) {
+  alert('please check the verse range appropriately and try again ')
+  return
+}
+
+else if (endAt<startFrom) {
+  alert('please check the verse range appropriately and try again')
+  return
+}
+
+document.querySelector('#formP').submit()
+
+}
+ 
+</script>
+
+</body>
+</html>
