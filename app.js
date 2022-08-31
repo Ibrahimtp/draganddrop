@@ -17,7 +17,8 @@ let personalizedRouter = require('./routes/personalized');
 let signupRouter = require('./routes/signup');
 let signinRouter = require('./routes/signin') ;
 let assessRouter = require('./routes/assess') ;
-
+let signoutRouter = require('./routes/signout') ;
+let adminRouter = require('./routes/admin') ;
 var app = express();
 
 // view engine setup
@@ -48,6 +49,10 @@ app.use('/personalized', personalizedRouter);
 app.use('/signup', signupRouter);
 app.use('/signin', signinRouter);
 app.use('/assess', assessRouter);
+app.use('/signout', signoutRouter);
+app.use('/admin', adminRouter);
+
+
 
 
 // catch 404 and forward to error handler

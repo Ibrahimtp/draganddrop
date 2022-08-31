@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
     total_verses: 6}
 
   console.log('end@ '+ variant)
-
+  if(isLoggedIn) {
   if(endAt) {
 
     axios(`https://cdn.jsdelivr.net/npm/quran-json@3.1.2/dist/chapters/en/${suratIndex}.json`).then((surat)=>{
@@ -53,7 +53,7 @@ router.get('/', function(req, res) {
       res.send(e)
     })
    
-  }
+  } }
 
   else {
 

@@ -21,12 +21,11 @@ router.post('/signingin',async(req,res)=>{
 
   let currentUser = req.body.fullname ;
   let currentUserPassword = req.body.password ;
-
-  let findCurrentUser = await user.findOne({fullname:currentUser}) ;
-  console.log(findCurrentUser)
-
-  if(findCurrentUser.fullName == currentUser  && findCurrentUser.password == currentUserPassword) {
-  req.session.userid = currentUser ;
+ 
+  let findCurrentUser = await user.findOne({fullName:req.body.fullname}) ;
+ console.log(findCurrentUser)
+  if(findCurrentUser.password == currentUserPassword && findCurrentUser.fullName == currentUser)   {
+      req.session.userid = currentUser ;
 
   res.render('configure',{configureMessage:false,accessWebsite:'Sign Out',href:'signout'})
    

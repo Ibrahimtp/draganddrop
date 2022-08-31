@@ -6,7 +6,13 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
  let  isLoggedIn = req.session.userid ;
   if(isLoggedIn) {
-  res.render('index', { accessWebsite: 'Sign Out',href:'signout' }) 
+
+    req.session.destroy();
+
+    res.render('index',{accessWebsite:'Sign In',href:'signin'})
+
+
+ 
   return
   }
   else {
