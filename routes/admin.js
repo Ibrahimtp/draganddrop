@@ -17,24 +17,16 @@ res.render('admin',{allStudent:allStudent}) ;
 
 
 
+})
+
+
+// router.post('/delete/:studentId',async ()=>{
 
 
 
 
 
-
-
-
-
-//  let  isLoggedIn = req.session.userid ;
-//   if(isLoggedIn) {
-//   res.render('index', { accessWebsite: 'Sign Out',href:'signout' }) 
-//   return
-//   }
-//   else {
-//     res.render('index',{accessWebsite:'Sign In',href:'signin'})
-//   }
-});
+// })
 
 module.exports = router; 
 

@@ -8,8 +8,20 @@ const sessions = require('express-session');
 const MongoStore = require('connect-mongo');
 
 const oneDay = 20000000000;
+ 
+// mongoose.connect('mongodb://localhost:27017/dragad')
+// mongoose.connect(uri)
 
-mongoose.connect('mongodb://localhost:27017/dragad')
+const uri = "mongodb+srv://ibrahim:WJgo0lnPPZjsQhRs@draganddrop.w4gluc5.mongodb.net/?retryWrites=true&w=majority" ;
+mongoose.connect(uri,
+  {
+    useNewUrlParser: true,
+    //    useFindAndModify: false,
+    useUnifiedTopology: true
+
+  }).then(()=> {
+    console.log("connected successfully")})
+
 
 var indexRouter = require('./routes/index');
 var configureRouter = require('./routes/configure');
@@ -33,7 +45,7 @@ app.use(sessions({
   secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
   store: MongoStore.create({
 
-    mongoUrl: 'mongodb://localhost:27017/dragad'
+    mongoUrl: uri
   }),
   saveUninitialized: true,
   cookie: {
